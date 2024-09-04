@@ -1,0 +1,15 @@
+spring:
+  batch:
+    job:
+      name: ${job.name:NONE}
+      enabled: true
+    jdbc:
+      initialize-schema: always
+  datasource:
+    url: ${MYSQL_URL}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
