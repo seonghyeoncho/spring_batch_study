@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
-// todo DefaultBatchConfiguration 상속하지 않으면 작동함?
 @Slf4j
 @Configuration
 @RequiredArgsConstructor
@@ -38,7 +37,6 @@ public class HelloWorldJobConfig {
             Tasklet helloWorldTasklet,
             PlatformTransactionManager transactionManager
     ) {
-        log.info("Step");
         return new StepBuilder("helloWorldStep", jobRepository)
                 // 단순한 방식 todo Task 더 알아보기
                 .tasklet(helloWorldTasklet, transactionManager)
@@ -48,7 +46,6 @@ public class HelloWorldJobConfig {
     @StepScope
     @Bean
     public Tasklet helloWorldTasklet() {
-        log.debug("Tasklet");
         // todo 뭔지 더 알아보기
         return ((contribution, chunkContext) -> {
             System.out.println("Hello World Spring Batch");
